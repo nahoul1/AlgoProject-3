@@ -8,12 +8,15 @@
 
 using namespace std;
 
-
+WordFinder::WordFinder(string file) {
+    filename = file;
+}
 
 template <typename T>
 void sortWords(T words)
 {
     selectionSort(words);
+
 }
 
 
@@ -49,11 +52,11 @@ ostream operator<<(ostream& out, const WordFinder& wf) {
 }
 
 
-void readFromFile(string filename) {
+void readFromFile() {
     fstream file;
     string word;
     file.open(filename.c_str());
-    while (file > word{
+    while (file > word){
         words.pushback(word);
     }
     file.close();

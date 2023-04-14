@@ -12,15 +12,16 @@ private:
     matrix<string>* wfMatrix = new matrix<string>();
     vector<T>* words = new vector<T>();
     BinarySearchTree<string>* lookup = new BinarySearchTree<string>();
+    string filename;
 
 public:
-    WordFinder(int N = 0);
+    WordFinder(string file);
     vector<T> Words();
     void initializeWords(ifstream& fin);
     friend ostream& operator<<(ostream& out, const WordFinder& wf);
     void sortWords();
-    void lookupWords(string x, int low, int high, const WordFinder& wf);
-    void readFromFile(string filename);
+    void lookupWords();
+    void readFromFile();
 
 };
 
