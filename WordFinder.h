@@ -1,6 +1,7 @@
 #include <string.h>
 #include <iostream>
 #include <fstream>
+#include "sort_algorithms.h"
 
 #ifndef WORDFINDER_H
 #define WORDFINDER_H
@@ -18,7 +19,8 @@ public:
     void initializeWords(ifstream& fin);
     friend ostream& operator<<(ostream& out, const WordFinder& wf);
     void sortWords();
-    void lookupWords();
+    void lookupWords(string x, int low, int high, const WordFinder& wf);
+    void readFromFile(string filename);
 
 };
 

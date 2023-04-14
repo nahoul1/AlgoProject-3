@@ -4,11 +4,63 @@
 #include <iostream>
 #include <fstream>
 #include "d_matrix-1.h"
-#include "BinarySearchTree.h"
+#include "sort_algorithms.h"
 
 using namespace std;
 
 
+
+template <typename T>
+void sortWords(T words)
+{
+    selectionSort(words);
+}
+
+
+void lookupWords(string x, int low, int high, const WordFinder& wf)
+{
+    // using binary search
+    if (low > high) {
+        return false;
+    }
+    else {
+        int mid = (low + high) / 2;
+        if (wf[mid] == x) {
+            return mid;
+        }
+        else if (wf[mid] > x) {
+            return lookupWords(x, low, mid - 1, wf);
+        }
+        else if (wf[mid] < x) {
+            return lookupWords(x, mid + 1, high, wf)
+        }
+    }
+        
+
+}
+
+
+ostream operator<<(ostream& out, const WordFinder& wf) {
+    int n = wf.size();
+
+    for (int i = 0; i < n; i++) {
+        cout << wf.at[i] << " ";
+    }
+}
+
+
+void readFromFile(string filename) {
+    fstream file;
+    string word;
+    file.open(filename.c_str());
+    while (file > word{
+        words.pushback(word);
+    }
+    file.close();
+}
+
+
+/*
 WordFinder::WordFinder()
 {
     wfMatrix.resize(0,0);
@@ -44,24 +96,4 @@ void WordFinder::initializeWords(ifstream& fin)
         }
     }
 }
-
-
-template <typename T>
-void sortWords(T words)
-{
-    selectionSort(words);
-}
-
-
-void lookupWords()
-{
-
-
-}
-
-
-
-
-
-
-
+*/
