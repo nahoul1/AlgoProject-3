@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include "sort_algorithms.h"
+#include "d_matrix-1.h"
+#include <string.h>
 
 #ifndef WORDFINDER_H
 #define WORDFINDER_H
@@ -9,10 +11,13 @@
 class WordFinder
 {
 private:
-    matrix<string>* wfMatrix = new matrix<string>();
+    template <typename T>
     vector<T>* words = new vector<T>();
-    BinarySearchTree<string>* lookup = new BinarySearchTree<string>();
+    matrix<string>* wfMatrix = new matrix<string>();
     string filename;
+
+    BinarySearchTree<string>* lookup = new BinarySearchTree<string>();
+
 
 public:
     WordFinder(string file);
@@ -25,5 +30,10 @@ public:
 
 };
 
+
+
+void matchWords(WordFinder& wf, LetterGrid& lg);
+
+void wordSearch();
 
 #endif

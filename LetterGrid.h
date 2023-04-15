@@ -5,13 +5,17 @@
 
 class LetterGrid
 {
+
 private:
 	matrix<string>* wfMatrix = new matrix<string>();
 public:
 	LetterGrid();
 	void printGrid(string file);
 	void readLetters(string filename);
+
 };
+
+
 
 
 
