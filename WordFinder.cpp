@@ -6,7 +6,6 @@
 #include "d_matrix-1.h"
 #include <ctime>
 #include <cstdlib>
-#include <Bits.h>
 #include "WordFinder.h"
 #include <cstring>
 
@@ -15,9 +14,9 @@ using namespace std;
 
 
 template <typename T>
-void WordFinder::readWords(string filename, vector<T>& v){
+void WordFinder::readWords(string filename, vector<T>& v) {
     ifstream fin;
-    fin.open(filename);
+    fin.open(filename.c_str());
     if (fin.fail()) {
         cout << "Error opening file" << endl;
         exit(1);
@@ -50,12 +49,12 @@ void WordFinder::sortWords(vector<string>& v) {
 
 void WordFinder::sortWordq(vector<string>& v) {
     int n = v.size();
-	quickSort(v, 0, n-1);
+    quickSort(v, 0, n - 1);
 }
 
 void WordFinder::sortWordh(vector<string>& v) {
-    
-	heapSort(v);
+
+    heapSort(v);
 }
 
 

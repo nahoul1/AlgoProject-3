@@ -27,23 +27,23 @@ void LetterGrid::readletters(ifstream& fin)
     mat_size = ch - '0';
     grid.resize(mat_size, mat_size);
 
-    file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    //file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     for (int i = 0; i < mat_size; i++)
     {
         for (int j = 0; j < mat_size; j++)
         {
             fin >> ch;
-            if (ch = ' '){
+            if (ch = ' ') {
                 continue;
             }
             else {
                 grid[i][j] = ch;
             }
             // If the read char is not Blank
-         }
         }
     }
+}
 
 
 
