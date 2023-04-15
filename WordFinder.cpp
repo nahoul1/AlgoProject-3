@@ -60,8 +60,7 @@ void WordFinder::sortWordh(vector<string>& v) {
 }
 
 
-template <typename T>
-string WordFinder::lookupWords(string x, int low, int high)
+int WordFinder::lookupWords(string x, int low, int high)
 {
     // using binary search
 
@@ -75,10 +74,10 @@ string WordFinder::lookupWords(string x, int low, int high)
             return mid;
         }
         else if (vords[mid] > x) {
-            return lookupWords(x, low, mid - 1, v);
+            return lookupWords(x, low, mid - 1);
         }
         else if (vords[mid] < x) {
-            return lookupWords(x, mid + 1, high, v);
+            return lookupWords(x, mid + 1, high);
         }
     }
 

@@ -31,8 +31,7 @@ public:
     void sortWordh(vector<string>& v);
 
     //a function to handle word lookups using binary search algorithm.
-    template <typename T>
-    string lookupWords(string x, int low, int high);
+    int lookupWords(string x, int low, int high);
 };
 
 

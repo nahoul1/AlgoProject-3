@@ -10,6 +10,21 @@
 
 using namespace std;
 
+template <typename T>
+T matchWords(WordFinder& wf, LetterGrid& lg) {
+	matrix<string> all_words;
+	lg.findWords(all_words);
+	int p = all_words.rows() - 1;
+	int h = wf.lookupWords(all_words[2][2], 0, p);
+
+	for (int i = 0; i < all_words.rows(); i++) {
+		if ((wf.lookupWords(all_words[i][0], 0, p)) != -1) {
+			cout << all_words[i][0] << endl;
+		}
+	}
+}
+
+
 void wordSearch() {
 	vector<string> words;
 
@@ -61,21 +76,11 @@ void wordSearch() {
 
 	cout << "Time required = " << difftime(finish, start) << " seconds" << endl;
 
-	//matchWords(*wf, *lg);
+	
+	void matchWords(*wf, *lg);
 
 };
 
-
-void matchWords(WordFinder& wf, LetterGrid& lg) {
-	matrix<string> all_words;
-	lg.findWords(all_words);
-
-	for (int i = 0; i < all_words.rows(); i++) {
-		if ((wf.lookupWords(all_words[i], 0, all_words.rows() - 1, wf.getWords())) != -1) {
-			cout << words[i] << endl;
-		}
-	}
-}
 
 int main() {
 	wordSearch();

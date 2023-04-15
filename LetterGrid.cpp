@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include"sort_algorithms.h"
 #include "d_matrix-1.h"
 #include "LetterGrid.h"
 
