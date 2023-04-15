@@ -2,32 +2,16 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include"sort_algorithms.h"
+#include "sort_algorithms.h"
+#include "d_matrix-1.h"
+#include <ctime>
+
+
 using namespace std;
 
-class WordFinder
-{
-private:
-    string filename;
-    vector<string>* words;
-    //a function to read the words from the glossary file, and store them in a vector
 
-public:
-    void readWords(string filename);
-
-    //an overloaded output operator “<< “ to print the word list, e.g., cout << words; prints the entire list of words from the vector.
-    friend ostream& operator<<(ostream& out, const WordFinder& wf);
-
-    //a function that sorts the words using SelectionSort algorithm (see the sort_algorithms.h file)
-    void sortWords(vector<string>& v);
-
-    //a function to handle word lookups using binary search algorithm.
-    template <typename T>
-    T lookupWords(string x, int low, int high, vector<T>& v);
-};
-
-
-void WordFinder::readWords(string filename) {
+template <typename T>
+void WordFinder::readWords(string filename, vector<T>& v) {
     ifstream fin;
     fin.open(filename);
     if (fin.fail()) {
@@ -53,7 +37,18 @@ ostream& operator<<(ostream& out, const WordFinder& wf) {
 
 
 void WordFinder::sortWords(vector<string>& v) {
+
     selectionSort(v);
+}
+
+void WordFinder::sortWordq(vector<string>& v) {
+    int n = v.size();
+	quickSort(v, 0, n);
+}
+
+void WordFinder::sortWordh(vector<string>& v) {
+    
+	heapSort(v);
 }
 
 template <typename T>

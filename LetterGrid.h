@@ -2,19 +2,19 @@
 #define LETTERGRID_H
 
 #include "d_matrix-1.h"
-
 class LetterGrid
 {
-
 private:
-	matrix<string>* wfMatrix = new matrix<string>();
+    string filename;
+    matrix<string> grid;
+    int mat_size;
+
 public:
-	LetterGrid();
-	void printGrid(string file);
-	void readLetters(string filename);
-
+    LetterGrid(string file);
+    void readletters(ifstream& fin);
+    void printGrid();
+    void findWords();
 };
-
 
 
 

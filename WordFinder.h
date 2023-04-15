@@ -11,29 +11,28 @@
 class WordFinder
 {
 private:
-    template <typename T>
-    vector<T>* words = new vector<T>();
-    matrix<string>* wfMatrix = new matrix<string>();
     string filename;
-
-    BinarySearchTree<string>* lookup = new BinarySearchTree<string>();
-
+    //vector<string> words;
+    //a function to read the words from the glossary file, and store them in a vector
 
 public:
-    WordFinder(string file);
-    vector<T> Words();
-    void initializeWords(ifstream& fin);
-    friend ostream& operator<<(ostream& out, const WordFinder& wf);
-    void sortWords();
-    void lookupWords();
-    void readFromFile();
+    template <typename T>
+    void readWords(string filename, vector<T>& v);
 
+    //an overloaded output operator “<< “ to print the word list, e.g., cout << words; prints the entire list of words from the vector.
+    friend ostream& operator<<(ostream& out, const WordFinder& wf);
+
+    //a function that sorts the words using SelectionSort algorithm (see the sort_algorithms.h file)
+    void sortWords(vector<string>& v);
+
+    void sortWordq(vector<string>& v);
+
+    void sortWordh(vector<string>& v);
+
+    //a function to handle word lookups using binary search algorithm.
+    template <typename T>
+    T lookupWords(string x, int low, int high, vector<T>& v);
 };
 
-
-
-void matchWords(WordFinder& wf, LetterGrid& lg);
-
-void wordSearch();
 
 #endif

@@ -2,26 +2,13 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include"sort_algorithms.h"
 #include "d_matrix-1.h"
+#include "LetterGrid.h"
+
 using namespace std;
 
 //Implement a class called LetterGrid that reads the letters in the grid from a file and stores them in a matrix.
-class LetterGrid
-{
-private:
-    string filename;
-    matrix<string> grid;
-    int mat_size;
 
-public:
-    LetterGrid(string file);
-    void readletters(ifstream& fin);
-    void printGrid();
-    void findWords();
-
-
-};
 
 LetterGrid::LetterGrid(string file) {
     filename = file;
@@ -65,7 +52,9 @@ void LetterGrid::printGrid() {
     }
 }
 
-void LetterGrid::findWords(){
+
+/*
+void LetterGrid::findWords() {
     for (int row = 0; row < mat_size; row++) {
         for (int col = 0; col < mat_size; col++) {
 
@@ -81,46 +70,48 @@ void LetterGrid::findWords(){
             downright = true;
 
 
-            if(row == 0 ){
+            if (row == 0) {
                 up = false;
                 upleft = false;
                 upright = false;
 
-            if(col == 0) {
-                left = false;
-                upleft = false;
-                downleft = false;
-            }
-
-            if(col = mat_size-1) {
-                right = false;
-                upright = false;
-                downright = false;
-            }
-
-            if(row = mat_size-1){
-                down = false;
-                downleft = false;
-                downright = false;
+                if (col == 0) {
+                    left = false;
+                    upleft = false;
+                    downleft = false;
                 }
 
-            if (up == true) {
-                for(int count = 5; count < mat_size; count++){
-                    for(int start = 0; start < count; start++){
-                        curr_word += grid[row][col];
+                if (col = mat_size - 1) {
+                    right = false;
+                    upright = false;
+                    downright = false;
+                }
+
+                if (row = mat_size - 1) {
+                    down = false;
+                    downleft = false;
+                    downright = false;
+                }
+
+                if (up == true) {
+                    for (int count = 5; count < mat_size; count++) {
+                        for (int start = 0; start < count; start++) {
+                            curr_word += grid[row][col];
+                        }
                     }
                 }
+
+
+
+
             }
 
-
-
+            cout << endl;
 
         }
 
-        cout << endl;
+
 
     }
-
-
-
 }
+*/
