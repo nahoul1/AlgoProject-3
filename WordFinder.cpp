@@ -1,102 +1,85 @@
-#include "WordFinder.h"
-#include <string.h>
-#include <vector>
 #include <iostream>
 #include <fstream>
-#include "d_matrix-1.h"
-#include "sort_algorithms.h"
-
+#include <string>
+#include <vector>
+#include"sort_algorithms.h"
 using namespace std;
 
-WordFinder::WordFinder(string file) {
-    filename = file;
+class WordFinder
+{
+private:
+    string filename;
+    vector<string>* words;
+    //a function to read the words from the glossary file, and store them in a vector
+
+public:
+    void readWords(string filename);
+
+    //an overloaded output operator “<< “ to print the word list, e.g., cout << words; prints the entire list of words from the vector.
+    friend ostream& operator<<(ostream& out, const WordFinder& wf);
+
+    //a function that sorts the words using SelectionSort algorithm (see the sort_algorithms.h file)
+    void sortWords(vector<string>& v);
+
+    //a function to handle word lookups using binary search algorithm.
+    template <typename T>
+    T lookupWords(string x, int low, int high, vector<T>& v);
+};
+
+
+void WordFinder::readWords(string filename) {
+    ifstream fin;
+    fin.open(filename);
+    if (fin.fail()) {
+        cout << "Error opening file" << endl;
+        exit(1);
+    }
+
+    string word;
+    while (fin >> word) {
+        words->push_back(word);
+    }
+    fin.close();
+}
+
+
+// check if it works
+ostream& operator<<(ostream& out, const WordFinder& wf) {
+    for (int i = 0; i < wf.words->size(); i++) {
+        out << wf.words->at(i) << " ";
+    }
+    return out;
+}
+
+
+void WordFinder::sortWords(vector<string>& v) {
+    selectionSort(v);
 }
 
 template <typename T>
-void sortWords(T words)
-{
-    selectionSort(words);
-
-}
-
-
-void lookupWords(string x, int low, int high, const WordFinder& wf)
+T WordFinder::lookupWords(string x, int low, int high, vector<T>& v)
 {
     // using binary search
     if (low > high) {
         return false;
     }
+
     else {
         int mid = (low + high) / 2;
-        if (wf[mid] == x) {
+        if (v[mid] == x) {
             return mid;
         }
-        else if (wf[mid] > x) {
-            return lookupWords(x, low, mid - 1, wf);
+        else if (v[mid] > x) {
+            return lookupWords(x, low, mid - 1, v);
         }
-        else if (wf[mid] < x) {
-            return lookupWords(x, mid + 1, high, wf)
-        }
-    }
-        
-
-}
-
-
-ostream operator<<(ostream& out, const WordFinder& wf) {
-    int n = wf.size();
-
-    for (int i = 0; i < n; i++) {
-        cout << wf.at[i] << " ";
-    }
-}
-
-template <typename T>
-void readFromFile(T words) {
-    fstream file;
-    string word;
-    file.open(filename.c_str());
-    while (file > word){
-        words.pushback(word);
-    }
-    file.close();
-}
-
-
-/*
-WordFinder::WordFinder()
-{
-    wfMatrix.resize(0,0);
-    vector<T>* words;
-    BinarySearchTree<string>* lookup = new BinarySearchTree<string>();
-    for (int i = 0; i < words; i++)
-    {
-        for (int j = 0; j < wfMatrix.cols(); j++)
-        {
-            lookup.add(wfMatrix[i][j]);
+        else if (v[mid] < x) {
+            return lookupWords(x, mid + 1, high, v);
         }
     }
+
+
 }
 
 
-template<typename T>
-vector<T> WordFinder::Words()
-{
-    return words;
-}
 
 
-void WordFinder::initializeWords(ifstream& fin)
-{
-    int N;
-    fin >> N;
-    wfMatrix.resize(N,N);
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-        {
-            fin >> wfMatrix[i][j];
-        }
-    }
-}
-*/
