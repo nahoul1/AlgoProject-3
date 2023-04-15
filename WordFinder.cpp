@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <Bits.h>
 #include "WordFinder.h"
+#include <cstring>
 
 
 using namespace std;
@@ -24,6 +25,7 @@ void WordFinder::readWords(string filename, vector<T>& v){
 
     string word;
     while (fin >> word) {
+        word[0] = tolower(word[0]);
         v.push_back(word);
     }
     fin.close();
@@ -48,7 +50,7 @@ void WordFinder::sortWords(vector<string>& v) {
 
 void WordFinder::sortWordq(vector<string>& v) {
     int n = v.size();
-	quickSort(v, 0, n);
+	quickSort(v, 0, n-1);
 }
 
 void WordFinder::sortWordh(vector<string>& v) {

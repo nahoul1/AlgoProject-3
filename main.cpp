@@ -29,7 +29,7 @@ void wordSearch() {
 	wf->readWords(glossary, words);
 
 	int choice;
-	cout << "Which type of sort would you like to use? (1)selection, (2)Quick, or (3)heap?" << endl;
+	cout << "Which type of sort would you like to use? (1)Selection, (2)Quick, or (3)Heap?" << endl;
 	cin >> choice;
 
 
@@ -39,20 +39,26 @@ void wordSearch() {
 		time(&start);
 		wf->sortWords(words);
 		time(&finish);
+		cout << "Using selection sort..." << endl;
 	}
 	else if (choice == 2) {
 		time(&start);
 		wf->sortWordq(words);
 		time(&finish);
+		cout << "Using quick sort..." << endl;
 	}
 	else if (choice == 3) {
 		time(&start);
 		wf->sortWordh(words);
 		time(&finish);
+		cout << "Using heap sort..." << endl;
 	}
 	else {
 		cout << "Invalid choice" << endl;
+		wordSearch();
 	}
+
+	//cout << words;
 
 	cout << "Time required = " << difftime(finish, start) << " seconds" << endl;
 
