@@ -20,7 +20,8 @@ public:
     void readWords(string filename, vector<T>& v);
 
     //an overloaded output operator “<< “ to print the word list, e.g., cout << words; prints the entire list of words from the vector.
-    friend ostream& operator<<(ostream& out, const WordFinder& wf);
+    template <typename T>
+    friend ostream& operator<<(ostream& out, vector<T>& v);
 
     //a function that sorts the words using SelectionSort algorithm (see the sort_algorithms.h file)
     void sortWords(vector<string>& v);

@@ -2,6 +2,7 @@
 #define LETTERGRID_H
 
 #include "d_matrix-1.h"
+
 class LetterGrid
 {
 private:

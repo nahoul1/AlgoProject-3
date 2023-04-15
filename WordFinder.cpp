@@ -5,13 +5,16 @@
 #include "sort_algorithms.h"
 #include "d_matrix-1.h"
 #include <ctime>
+#include <cstdlib>
+#include <Bits.h>
+#include "WordFinder.h"
 
 
 using namespace std;
 
 
 template <typename T>
-void WordFinder::readWords(string filename, vector<T>& v) {
+void WordFinder::readWords(string filename, vector<T>& v){
     ifstream fin;
     fin.open(filename);
     if (fin.fail()) {
@@ -21,19 +24,21 @@ void WordFinder::readWords(string filename, vector<T>& v) {
 
     string word;
     while (fin >> word) {
-        words->push_back(word);
+        v.push_back(word);
     }
     fin.close();
 }
 
 
 // check if it works
-ostream& operator<<(ostream& out, const WordFinder& wf) {
-    for (int i = 0; i < wf.words->size(); i++) {
-        out << wf.words->at(i) << " ";
+template <typename T>
+ostream& operator<<(ostream& out, vector<T>& v) {
+    for (int i = 0; i < v.size(); i++) {
+        out << v.at(i) << " ";
     }
     return out;
 }
+
 
 
 void WordFinder::sortWords(vector<string>& v) {
@@ -50,6 +55,7 @@ void WordFinder::sortWordh(vector<string>& v) {
     
 	heapSort(v);
 }
+
 
 template <typename T>
 T WordFinder::lookupWords(string x, int low, int high, vector<T>& v)

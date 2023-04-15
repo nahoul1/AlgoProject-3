@@ -4,7 +4,10 @@
 #include <vector>
 #include "LetterGrid.h"
 #include "WordFinder.h"
+#include "WordFinder.cpp"
 #include "sort_algorithms.h"
+#include <cstdlib>
+#include <Bits.h>
 
 using namespace std;
 

@@ -14,6 +14,8 @@ LetterGrid::LetterGrid(string file) {
     filename = file;
 }
 
+
+
 void LetterGrid::readletters(ifstream& fin)
 {
     int digit;
@@ -42,6 +44,8 @@ void LetterGrid::readletters(ifstream& fin)
          }
         }
     }
+
+
 
 void LetterGrid::printGrid() {
     for (int i = 0; i < mat_size; i++) {
