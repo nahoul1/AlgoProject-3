@@ -6,14 +6,18 @@
 
 using namespace std;
 
-LetterGrid::LetterGrid() {
-
+LetterGrid::LetterGrid(string filename) {
+	
 }
 
 void LetterGrid::printGrid() {
-	int n = wfMatrix.size();
-	for (int i = 0; i < n; i++) {
-		cout << wfMatrix->at[i] << " ";
+	int r = wfMatrix->rows();
+	int c = wfMatrix->cols();
+	for (int i = 0; i < r; i++) {
+		for (int j = 0; j < c; j++) {
+			cout << wfMatrix->at[i][j] << " ";
+		}
+		
 	}
 }
 

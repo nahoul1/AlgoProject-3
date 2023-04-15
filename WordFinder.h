@@ -10,8 +10,6 @@ class WordFinder
 {
 private:
     matrix<string>* wfMatrix = new matrix<string>();
-    vector<T>* words = new vector<T>();
-    BinarySearchTree<string>* lookup = new BinarySearchTree<string>();
     string filename;
 
 public:

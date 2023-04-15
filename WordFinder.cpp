@@ -51,8 +51,8 @@ ostream operator<<(ostream& out, const WordFinder& wf) {
     }
 }
 
-
-void readFromFile() {
+template <typename T>
+void readFromFile(T words) {
     fstream file;
     string word;
     file.open(filename.c_str());
