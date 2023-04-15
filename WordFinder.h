@@ -12,7 +12,7 @@ class WordFinder
 {
 private:
     string filename;
-    //vector<string> words;
+    vector<string> vords;
     //a function to read the words from the glossary file, and store them in a vector
 
 public:
@@ -32,7 +32,7 @@ public:
 
     //a function to handle word lookups using binary search algorithm.
     template <typename T>
-    T lookupWords(string x, int low, int high, vector<T>& v);
+    string lookupWords(string x, int low, int high);
 };
 
 

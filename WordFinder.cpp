@@ -26,8 +26,10 @@ void WordFinder::readWords(string filename, vector<T>& v) {
     while (fin >> word) {
         word[0] = tolower(word[0]);
         v.push_back(word);
+        vords.push_back(word);
     }
     fin.close();
+
 }
 
 
@@ -59,22 +61,23 @@ void WordFinder::sortWordh(vector<string>& v) {
 
 
 template <typename T>
-T WordFinder::lookupWords(string x, int low, int high, vector<T>& v)
+string WordFinder::lookupWords(string x, int low, int high)
 {
     // using binary search
+
     if (low > high) {
         return false;
     }
 
     else {
         int mid = (low + high) / 2;
-        if (v[mid] == x) {
+        if (vords[mid] == x) {
             return mid;
         }
-        else if (v[mid] > x) {
+        else if (vords[mid] > x) {
             return lookupWords(x, low, mid - 1, v);
         }
-        else if (v[mid] < x) {
+        else if (vords[mid] < x) {
             return lookupWords(x, mid + 1, high, v);
         }
     }

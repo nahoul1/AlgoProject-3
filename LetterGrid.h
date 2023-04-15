@@ -14,9 +14,10 @@ public:
     LetterGrid(string file);
     void readletters(ifstream& fin);
     void printGrid();
-    void findWords();
-};
+    void findWords(matrix<string>& lst_word);
 
+
+};
 
 
 
