@@ -1,17 +1,15 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <vector>
 #include "sort_algorithms.h"
-#include "d_matrix-1.h"
-#include <ctime>
-#include <cstdlib>
 #include "WordFinder.h"
-#include <cstring>
-
 
 using namespace std;
 
+WordFinder::WordFinder() {
+    filename = "Glossary.txt";
+    readWords(filename, vords);
+}
 
 template <typename T>
 void WordFinder::readWords(string filename, vector<T>& v) {
@@ -43,16 +41,16 @@ ostream& operator<<(ostream& out, vector<T>& v) {
 }
 
 
-
 void WordFinder::sortWords(vector<string>& v) {
-
     selectionSort(v);
 }
+
 
 void WordFinder::sortWordq(vector<string>& v) {
     int n = v.size();
     quickSort(v, 0, n - 1);
 }
+
 
 void WordFinder::sortWordh(vector<string>& v) {
 
@@ -65,7 +63,7 @@ int WordFinder::lookupWords(string x, int low, int high)
     // using binary search
 
     if (low > high) {
-        return false;
+        return -1;
     }
 
     else {
@@ -78,6 +76,9 @@ int WordFinder::lookupWords(string x, int low, int high)
         }
         else if (vords[mid] < x) {
             return lookupWords(x, mid + 1, high);
+        }
+        else {
+            return -1;
         }
     }
 

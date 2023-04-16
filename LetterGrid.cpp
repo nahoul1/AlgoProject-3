@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <vector>
 #include "d_matrix-1.h"
 #include "LetterGrid.h"
+
 
 using namespace std;
 
@@ -11,17 +11,26 @@ using namespace std;
 
 LetterGrid::LetterGrid(string file) {
     filename = file;
+
 }
 
-void LetterGrid::readletters(ifstream& fin)
+void LetterGrid::readletters(string& fin)
 {
+
+    ifstream fin;
     int digit;
-    char ch; // holds each value read from file
+    int ch; // holds each value read from file
     fstream file;
 
     file.open(filename.c_str());
     file >> ch;
-    mat_size = ch - '0';
+
+    cout<< ch << endl;
+
+    mat_size = ch;
+
+
+
     grid.resize(mat_size, mat_size);
 
     file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -40,10 +49,18 @@ void LetterGrid::readletters(ifstream& fin)
             // If the read char is not Blank
         }
     }
+
+
+
+
 }
 
+
+
+
+
 void LetterGrid::printGrid() {
-    for (int i = 0; i < mat_size; i++) {
+    for (int i = 0; i < mat_size; i++) { // change mat_size
         for (int j = 0; j < mat_size; j++) {
             cout << grid[i][j] << " ";
         }
@@ -54,7 +71,17 @@ void LetterGrid::printGrid() {
 void LetterGrid::findWords(matrix<string>& lst_word) {
     string curr_word;
     int col_multiplier, row_multiplier, matrix_index;
+
+    printGrid();
+
+    mat_size = grid.rows();
+    //cout<< grid.rows() << endl;
+
     int number_of_words = 8 * mat_size * mat_size * (mat_size - 5);
+
+    //cout << number_of_words << endl;
+    //cout << lst_word.rows() << endl;
+
     lst_word.resize(number_of_words, 3);
 
 

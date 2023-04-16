@@ -1,37 +1,38 @@
 #include <iostream>
-#include <string>
-#include <ctime>
 #include <vector>
 #include "LetterGrid.h"
 #include "WordFinder.h"
-#include "WordFinder.cpp"
-#include "sort_algorithms.h"
-#include <cstdlib>
-
 using namespace std;
 
-template <typename T>
-T matchWords(WordFinder& wf, LetterGrid& lg) {
-	matrix<string> all_words;
-	lg.findWords(all_words);
-	int p = all_words.rows() - 1;
-	int h = wf.lookupWords(all_words[2][2], 0, p);
+void matchWords(WordFinder wf, LetterGrid lg)
+{
+    matrix<string> all_words;
+    lg.findWords(all_words);
+    int p = all_words.rows() - 1;
+    cout << all_words.rows() << endl;
 
-	for (int i = 0; i < all_words.rows(); i++) {
-		if ((wf.lookupWords(all_words[i][0], 0, p)) != -1) {
-			cout << all_words[i][0] << endl;
-		}
-	}
+    for (int i = 0; i < all_words.rows(); i++) {
+
+        string checking_word = all_words[i][0];
+
+        if ((wf.lookupWords(checking_word, 0,p)) == -1)
+        {
+            continue; // if the word is not found, continue to the next word
+        }
+        else{
+            cout << "Found: pos_x( " << all_words[i][1] <<" ), pos_y( "<< all_words[i][2] <<" ) –-> wordFound: " << checking_word << endl;
+        }
+    }
 }
 
-
-void wordSearch() {
+void wordSearch()
+{
 	vector<string> words;
 
-	string gridFile;
+	string gridFile = "input15.txt";
 	string glossary;
 	cout << "Enter the name of the .txt grid file: ";
-	cin >> gridFile;
+	//cin >> gridFile;
 
 	glossary = "Glossary.txt";
 
@@ -39,6 +40,7 @@ void wordSearch() {
 	LetterGrid* lg = new LetterGrid(gridFile);
 	WordFinder* wf = new WordFinder();
 
+    lg->readletters(gridFile); // read the letters from the file
 
 	wf->readWords(glossary, words);
 
@@ -50,6 +52,7 @@ void wordSearch() {
 	time_t start, finish;
 
 	if (choice == 1) {
+        cout<< "with checker in place" << endl;
 		time(&start);
 		wf->sortWords(words);
 		time(&finish);
@@ -72,16 +75,15 @@ void wordSearch() {
 		wordSearch();
 	}
 
-	//cout << words;
-
 	cout << "Time required = " << difftime(finish, start) << " seconds" << endl;
 
-	
-	void matchWords(*wf, *lg);
-
-};
+    matchWords(*wf, *lg);
 
 
-int main() {
-	wordSearch();
+}
+
+int main()
+{
+    wordSearch();
+    return 0;
 }

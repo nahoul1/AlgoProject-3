@@ -5,6 +5,7 @@
 
 class LetterGrid
 {
+
 private:
     string filename;
     matrix<string> grid;
@@ -12,14 +13,10 @@ private:
 
 public:
     LetterGrid(string file);
-    void readletters(ifstream& fin);
+    void readletters(string& fin);
     void printGrid();
     void findWords(matrix<string>& lst_word);
 
 
 };
-
-
-
-
 #endif

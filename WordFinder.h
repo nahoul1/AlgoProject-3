@@ -1,21 +1,16 @@
-#include <string.h>
-#include <iostream>
-#include <fstream>
-#include "sort_algorithms.h"
-#include "d_matrix-1.h"
-#include <string.h>
-
 #ifndef WORDFINDER_H
 #define WORDFINDER_H
 
 class WordFinder
 {
+
 private:
     string filename;
     vector<string> vords;
     //a function to read the words from the glossary file, and store them in a vector
 
 public:
+    WordFinder();
     template <typename T>
     void readWords(string filename, vector<T>& v);
 
@@ -32,6 +27,7 @@ public:
 
     //a function to handle word lookups using binary search algorithm.
     int lookupWords(string x, int low, int high);
+
 };
 
 
